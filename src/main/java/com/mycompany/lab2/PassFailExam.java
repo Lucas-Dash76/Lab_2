@@ -8,15 +8,17 @@ package com.mycompany.Lab2;
  *
  * @author 6237800
  */
-public class PassFailExam extends GradedActivity {
+public class PassFailExam extends PassFailActivity {
     private int numQuestions;
     private double pointsEach;
     private int numMissed;
 
-    public PassFailExam(int numQuestions, int numMissed, double pointsEach) {
-        this.numQuestions = numQuestions;
-        this.pointsEach = pointsEach;
+    public PassFailExam(int numQuestions, int numMissed, double minPassingScore) {
+        this.numQuestions = numQuestions; 
+        this.pointsEach = 100/numQuestions;
         this.numMissed = numMissed;
+        setScore(100 - (numMissed * pointsEach));
+        setMinPassingScore(minPassingScore);
     }
 
     public double getPointsEach() {
@@ -25,6 +27,12 @@ public class PassFailExam extends GradedActivity {
 
     public int getNumMissed() {
         return numMissed;
+    }
+    
+    @Override
+    public String toString() {
+        return "each question counts " + pointsEach + "\nthe exam score is " + getScore() +
+                "\nthe exam grade is " + getGrade();
     }
     
     

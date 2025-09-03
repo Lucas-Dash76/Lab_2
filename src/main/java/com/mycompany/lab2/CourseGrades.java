@@ -13,6 +13,7 @@ public class CourseGrades implements Analyzable {
     private int NUM_GRADES = 4;
 
     public CourseGrades() {
+        this.grades = new GradedActivity[NUM_GRADES];
     }
     
     public void setLab(GradedActivity aLab) {
@@ -49,13 +50,27 @@ public class CourseGrades implements Analyzable {
 
     @Override
     public GradedActivity getHighest() {
-        
+        GradedActivity highestScore = grades[0];
+        for (int i = 0; i < grades.length; i++) {
+            if ( grades[i].getScore() > highestScore.getScore()) {
+                highestScore = grades[i];
+            }
+        }
+        return highestScore;
     }
 
     @Override
     public GradedActivity getLowest() {
-        
+        GradedActivity lowestScore = grades[0];
+        for (int i = 0; i < grades.length; i++) {
+            if ( grades[i].getScore() < lowestScore.getScore()) {
+                lowestScore = grades[i];
+                return lowestScore;
+            }
+        }
+        return lowestScore;
     }
+    
     
     
 }

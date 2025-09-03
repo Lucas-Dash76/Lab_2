@@ -16,8 +16,8 @@ public class FinalExam extends GradedActivity {
     public FinalExam(int numQuestions, int numMissed) {
         this.numQuestions = numQuestions;
         this.numMissed = numMissed;
-        pointsEach = 100/this.numQuestions;
-        setScore(100 - (this.numMissed * pointsEach));
+        pointsEach = 100/numQuestions;
+        setScore(100 - (numMissed * pointsEach));
     }
     
     public double getPointsEach() {
@@ -27,4 +27,11 @@ public class FinalExam extends GradedActivity {
     public int getNumMissed() {
         return numMissed;
     }
+
+    @Override
+    public String toString() {
+        return "each question counts " + getPointsEach() + "\nthe exam score is " + getScore() +
+                "\nthe exam grade is " + getGrade();
+    }
+    
 }
